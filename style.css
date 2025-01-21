@@ -1,27 +1,79 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  .h1 {
-    text-align: left;
-    font-family: sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.06em;
-    font-weight: 400;
-    position: relative;
-    padding: 20px;
-  }
-  
-  .h1-span12 {
-    background: linear-gradient(180deg, rgba(203, 90, 145, 1) 0%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: "AppleGaramondLight-Regular", sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.06em;
-    font-weight: 400;
-  }
+  box-sizing: border-box;
+}
 
-  
-  
+body {
+  background-color: #f5f5f5; /* Light background to ensure text contrast */
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.heading {
+  text-align: left;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  position: relative;
+  height: auto;
+  padding: 20px;
+}
+
+.heading-span12,
+.heading-span13,
+.heading-span14,
+.heading-span15,
+.heading-span16,
+.heading-span17,
+.heading-span18,
+.heading-span19,
+.heading-span20,
+.heading-span21,
+.heading-span22 {
+  background: (180deg, rgba(203, 90, 145, 1) 0%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "AppleGaramondLight-Regular", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+}
+
+/* Optional: Specific text colors for visibility */
+.heading-span12,
+.heading-span16,
+.heading-span18,
+.heading-span20 {
+  -webkit-text-fill-color: #CB5A91; /* Makes sure the text is visible */
+}
+
+.heading-span13,
+.heading-span17,
+.heading-span19,
+.heading-span21 {
+  -webkit-text-fill-color: #dd97b9; /* Set some colors for specific spans */
+}
+
+/* You can also give a specific color to the remaining spans if needed */
+.heading-span14,
+.heading-span15,
+.heading-span22 {
+  -webkit-text-fill-color: #f5bdd8; /* Light pink color */
+}
+
+/* Adjust line height to make sure text doesn't overlap */
+.heading span {
+  display: inline-block;
+  margin-right: 5px;
+  line-height: 1.5;
+}
+
+.rectangle-1,
+.rectangle-1 * {
+  box-sizing: border-box;
+}
+.rectangle-1 {
+  height: 1131px;
+  position: relative;
+  overflow: visible;
+}
