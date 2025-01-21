@@ -1,11 +1,17 @@
 * {
   box-sizing: border-box;
 }
-
+@font-face {
+  font-family: 'AppleGaramond-Light'; /* Match this name consistently */
+  src: url('./fonts/AppleGaramond.ttf') format('truetype'); /* Updated to correct path */
+}
+@font-face {
+  font-family: 'AppleGaramond-Regular';
+  src: url('./  fonts/AppleGaramond.ttf');
+}
 body {
   background-color: #f5f5f5; /* Light background to ensure text contrast */
   margin: 0;
-  font-family: sans-serif;
 }
 
 .heading {
@@ -16,6 +22,7 @@ body {
   position: relative;
   height: auto;
   padding: 20px;
+  font-family: "AppleGaramondLight-Regular",sans-serif;
 }
 
 .heading-span12,
@@ -45,6 +52,7 @@ body {
 .heading-span18,
 .heading-span20 {
   -webkit-text-fill-color: #CB5A91; /* Makes sure the text is visible */
+  
 }
 
 .heading-span13,
