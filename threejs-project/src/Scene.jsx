@@ -1,19 +1,16 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera, OrbitControls } from "@react-three/drei";
-import { useRef, useState } from "react";
-import { useControls } from "./useControls";
+import { useState, useEffect } from "react";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
 function Character() {
   const ref = useRef();
-  const { forward, backward, left, right } = useControls();
+  const speed = 0.05;
 
   useFrame(() => {
     if (!ref.current) return;
-    const speed = 0.05;
-    if (forward) ref.current.position.z -= speed;
-    if (backward) ref.current.position.z += speed;
-    if (left) ref.current.position.x -= speed;
-    if (right) ref.current.position.x += speed;
+    // Movement logic here (you can implement it if you want to move the character with keys)
   });
 
   return (
@@ -27,33 +24,38 @@ function Character() {
 export default function Scene() {
   const [view, setView] = useState(1);
 
+  // Set up key press listener for 'Y' key
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "y" || event.key === "Y") {
+        setView((prevView) => (prevView === 1 ? 2 : 1));
+      }
+    };
+
+    // Add event listener for keydown
+    window.addEventListener("keydown", handleKeyPress);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
   return (
-    <>
-      <Canvas>
-        {/* Switchable Camera */}
-        <PerspectiveCamera makeDefault position={view === 1 ? [0, 2, 5] : [0, 5, 10]} />
-        
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
-  
-        <Character />
+    <Canvas style={{ width: '100vw', height: '100vh' }}>
+      {/* PerspectiveCamera with OrbitControls */}
+      <PerspectiveCamera makeDefault position={view === 1 ? [0, 2, 5] : [0, 5, 10]} />
+      <OrbitControls />
 
-        {/* Ground */}
-        <mesh position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[50, 50]} />
-          <meshStandardMaterial color="green" />
-        </mesh>
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
+      
+      <Character />
 
-        <OrbitControls />
-      </Canvas>
-
-      {/* Camera Switch Button */}
-      <button 
-        onClick={() => setView(view === 1 ? 2 : 1)} 
-        style={{ position: "absolute", top: 20, left: 20, padding: "10px", background: "white", border: "none", cursor: "pointer" }}
-      >
-        Switch Camera
-      </button>
-    </>
+      <mesh position={[0, -0.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[50, 50]} />
+        <meshStandardMaterial color="green" />
+      </mesh>
+    </Canvas>
   );
 }
