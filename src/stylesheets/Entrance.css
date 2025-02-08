@@ -1,0 +1,24 @@
+.entrance-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Ensures the video stays in the background */
+  }
+  
+  .canvas {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Ensures 3D elements stay above the video */
+  }
+  
