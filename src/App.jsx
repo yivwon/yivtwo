@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Scene from "./Scene";
+import videoSrc from "/assets/videos/HighTeaScene.mp4"; // Ensure the video file is in the correct path
 
 // Array of video sources
 const videoSources = [
@@ -12,10 +13,13 @@ export default function App() {
   const [videoSrc, setVideoSrc] = useState("");
 
   useEffect(() => {
+// <<<<<<< HEAD
     // Randomly select a video source
     const randomVideo = videoSources[Math.floor(Math.random() * videoSources.length)];
     setVideoSrc(randomVideo);
 
+// =======
+// >>>>>>> 51faad201f45985b819b5745fad8ce8e717a61fd
     const handleKeyPress = () => setStarted(true);
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
@@ -47,7 +51,11 @@ export default function App() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+// <<<<<<< HEAD
               backgroundColor: "rgba(255, 255, 255, 0)",
+// =======
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+// >>>>>>> 51faad201f45985b819b5745fad8ce8e717a61fd
               color: "white",
               fontSize: "24px",
               fontWeight: "bold",
